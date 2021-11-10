@@ -1,3 +1,4 @@
+const { getNodeSourceCodeLocation } = require('parse5/lib/tree-adapters/default');
 const Engineer = require('../lib/Engineer');
 
 test('creates an Engineer object', () => {
@@ -7,3 +8,4 @@ test('creates an Engineer object', () => {
     expect(engineer.github).toEqual(expect.stringContaining(engineer.github.toString()));
 
 })
+

@@ -33,7 +33,7 @@ const generateManager = () => {
 const generateEmployee = () => {
     console.log(`Let's add some employees!`)
     return inquirer
-        .prompt(
+        .prompt([
             {
                 type: 'input',
                 name: 'employeeName',
@@ -49,7 +49,7 @@ const generateEmployee = () => {
                 name: 'employeeRole',
                 message: "What is the employee's role?",
                 choices: ['Engineer', 'Intern']
-            })
+            }])
         .then(({ employeeRole }) => {
             if (employeeRole === 'Intern') {
                 return inquirer

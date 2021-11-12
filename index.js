@@ -3,8 +3,11 @@ const inquirer = require('inquirer');
 
 const { generateHTML } = require('./lib/generateHTML')
 
+const employees = [];
+
 const generateManager = () => {
     console.log(`Let's build your team profile!`)
+
     return inquirer
         .prompt([
             {
@@ -60,6 +63,15 @@ const generateManager = () => {
                 }
             }
         ])
+        .then((data) => {
+            const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);
+            employees.push(manager);
+
+            return generateManager();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 
 
 }

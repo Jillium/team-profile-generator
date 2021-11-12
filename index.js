@@ -14,6 +14,7 @@ const generateManager = () => {
                 validate: managerNameInput => {
                     if (managerNameInput) {
                         return true;
+                        
                     } else {
                         console.log("Please enter your manager's name!")
                         return false;

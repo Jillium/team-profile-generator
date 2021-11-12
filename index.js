@@ -1,5 +1,7 @@
-const { generate } = require('escodegen');
+const fs = require('fs');
 const inquirer = require('inquirer');
+
+const { generateHTML } = require('./lib/generateHTML')
 
 const generateManager = () => {
     console.log(`Let's build your team profile!`)
@@ -154,5 +156,9 @@ const generateEmployee = () => {
 
 generateManager()
     .then(generateEmployee)
+    .then(generateHTML)
+    //then create html page
+    //then write html file
+    // then catch errors 
 
 

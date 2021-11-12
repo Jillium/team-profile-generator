@@ -153,12 +153,31 @@ const generateEmployee = () => {
 
 }
 
+const writeFile = (fileName, data) => {
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+            return console.log(err);
+        } 
+        console.log('Your file has been created!');
+    });
+};
 
+function init() {
 generateManager()
     .then(generateEmployee)
-    .then(generateHTML)
-    //then create html page
-    //then write html file
+    .then(input => {
+        return generateHTML(input);
+    })
+    .then(html => {
+        writeFile('htmldemo.html', html);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+init();
+    
     // then catch errors 
 
 

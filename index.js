@@ -8,22 +8,53 @@ const generateManager = () => {
             {
                 type: 'input',
                 name: 'managerName',
-                message: "What is your manager's name?"
+                message: "What is your manager's name? (Required)",
+                validate: managerNameInput => {
+                    if (managerNameInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter your manager's name!")
+                        return false;
+                    }
+                }
             },
             {
                 type: 'input',
-                name: 'managerID',
-                message: "What is your manager's ID?"
+                name: 'managerId',
+                message: "What is your manager's ID? (Required)",
+                validate: managerId => {
+                    if (managerId) {
+                        return true;
+                    } else {
+                        console.log("Please enter your manager's name!")
+                        return false;
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'managerEmail',
-                message: "What is your manager's email?"
+                message: "What is your manager's email? (Required)",
+                validate: managerEmail => {
+                    if (managerEmail) {
+                        return true;
+                    } else {
+                        console.log("Please enter your manager's email!")
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'managerOffice',
-                message: "What is your manager's office number?"
+                message: "What is your manager's office number? (Required)",
+                validate: managerOffice => {
+                    if (managerOffice) {
+                        return true;
+                    } else {
+                        console.log("Please enter your manager's office number!")
+                        return false;
+                    }
+                }
             }
         ])
 
@@ -37,12 +68,28 @@ const generateEmployee = () => {
             {
                 type: 'input',
                 name: 'employeeName',
-                message: "What is the employee name?"
+                message: "What is the employee name? (Required)",
+                validate: employeeName => {
+                    if (employeeName) {
+                        return true;
+                    } else {
+                        console.log("Please enter your employee's name!")
+                        return false;
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'employeeId',
-                message: "What is the employee's ID?"
+                message: "What is the employee's ID? (Required)",
+                validate: employeeId => {
+                    if (employeeId) {
+                        return true;
+                    } else {
+                        console.log("Please enter your employee's ID!")
+                        return false;
+                    }
+                }
             },
             {
                 type: 'list',
@@ -53,29 +100,59 @@ const generateEmployee = () => {
         .then(({ employeeRole }) => {
             if (employeeRole === 'Intern') {
                 return inquirer
-                    .prompt(
+                    .prompt([
                         {
                             type: 'input',
                             name: 'internSchool',
                             message: "What is the intern's school?"
+                        },
+                        {
+                            type: 'confirm',
+                            name: 'confirmAddEmployee',
+                            message: 'Would you like to enter another employee?',
+                            default: false
                         }
-                    )
+
+                    ])
+                    .then(employeeData => {
+                        if (employeeData.confirmAddEmployee) {
+                            return generateEmployee();
+                        } else {
+                            return
+                        }
+                    })
             } else {
                 if (employeeRole === 'Engineer') {
                     return inquirer
-                        .prompt(
+                        .prompt([
                             {
                                 type: 'input',
                                 name: 'engineerGithub',
                                 message: "What is the engineer's github?"
+                            },
+                            {
+                                type: 'confirm',
+                                name: 'confirmAddEmployee',
+                                message: 'Would you like to enter another employee?',
+                                default: false
                             }
-                        )
+                        ])
+                        .then(employeeData => {
+                            if (employeeData.confirmAddEmployee) {
+                                return generateEmployee();
+                            } else {
+                                return
+                            }
+                        })
                 }
             }
         })
+
 
 }
 
 
 generateManager()
     .then(generateEmployee)
+
+

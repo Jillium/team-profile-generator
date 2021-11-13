@@ -84,6 +84,7 @@ async function startQuestions() {
 			employeeObject = { ...employeeObject, manager }
 			employees.push(employeeObject);
 		}
+	}
 		
 
 		let engineer
@@ -119,6 +120,7 @@ async function startQuestions() {
 				employeeObject = { ...employeeObject, ...manager, engineer }
 				employees.push(employeeObject);
 			}
+		}
 			
 
 			let intern
@@ -176,8 +178,8 @@ async function startQuestions() {
 
 
 
-		}
-	}
+		
+	
 }
 
 startQuestions()

@@ -1,11 +1,12 @@
 const fs = require('fs');
 const inquirer = require('inquirer')
+const { generateHTML } = require('./lib/generateHTML')
 
 let employees = []
-
+console.log("Let's build your team profile!")
 async function startQuestions() {
-	console.log("Let's build your team profile!")
-	// try {
+	
+	
 
 
 
@@ -48,7 +49,7 @@ async function startQuestions() {
 
 	let employeeObject = employee
 
-	console.log(employee);
+	
 
 	let manager
 	if (employee.employeeRole === 'Manager') {
@@ -117,7 +118,7 @@ async function startQuestions() {
 				}
 			])
 			if (engineer) {
-				employeeObject = { ...employeeObject, ...manager, engineer }
+				employeeObject = { ...employeeObject, engineer }
 				employees.push(employeeObject);
 			}
 		}
@@ -125,6 +126,7 @@ async function startQuestions() {
 
 			let intern
 			if (employee.employeeRole === 'Intern') {
+
 				intern = await inquirer.prompt([
 					{
 						type: 'input',
@@ -153,26 +155,27 @@ async function startQuestions() {
 					}
 				])
 				if (intern) {
-					employeeObject = { ...employeeObject, ...manager, ...engineer, intern }
+					employeeObject = { ...employeeObject, intern }
 					employees.push(employeeObject);
 				}
 
-				console.log(employees);
+				
 
-				const newEmployeeQuestions = await inquirer.prompt([
-					{
-						type: 'confirm',
-						name: 'newEmployee',
-						message: "Would you like to add another employee?"
-					}
-				])
 
-				if(newEmployeeQuestions.newEmployee){
-					startQuestions()
-				} else {
-					console.log(employees);
+			}
+
+			const newEmployeeQuestions = await inquirer.prompt([
+				{
+					type: 'confirm',
+					name: 'newEmployee',
+					message: "Would you like to add another employee?"
 				}
+			])
 
+			if(newEmployeeQuestions.newEmployee){
+				startQuestions()
+			} else {
+				console.log(employees);
 			}
 
 
@@ -182,4 +185,26 @@ async function startQuestions() {
 	
 }
 
-startQuestions()
+const writeFile = (fileName, data) => {
+	fs.writeFile(fileName, data, err => {
+		if (err) {
+			return console.log(err);
+		}
+		console.log('Your file has been created!');
+	});
+};
+
+function init() {
+	startQuestions()
+	.then(() => {
+		console.log(employees)
+		return generateHTML(employees);
+	})
+	.then(html => {
+		writeFile('htmldemo.html', html);
+	})
+	.catch(err => {
+		console.log(err);
+	})
+}
+init();

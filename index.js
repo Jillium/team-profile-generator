@@ -64,14 +64,23 @@ const generateManager = () => {
             }
         ])
         .then((data) => {
-            const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);
-            employees.push(manager);
+            if (data.confirmAddEmployee) {
+                let employee = {
+                    ...data,
+                    // ...employeeData
+                };
+                employees.push(employee);
+                return generateManager();
+            } else {
+                let employee = {
+                    ...data,
+                    // ...employeeData
+                };
+                employees.push(employee);
+                return;
 
-            return generateManager();
+            }
         })
-        .catch((err) => {
-            console.log(err);
-        });
 
 
 }
@@ -112,8 +121,8 @@ const generateEmployee = () => {
                 message: "What is the employee's role?",
                 choices: ['Engineer', 'Intern']
             }])
-        .then(({ employeeRole }) => {
-            if (employeeRole === 'Intern') {
+        .then((data) => {
+            if (data.employeeRole === 'Intern') {
                 return inquirer
                     .prompt([
                         {
@@ -137,7 +146,7 @@ const generateEmployee = () => {
                         }
                     })
             } else {
-                if (employeeRole === 'Engineer') {
+                if (data.employeeRole === 'Engineer') {
                     return inquirer
                         .prompt([
                             {
@@ -152,14 +161,26 @@ const generateEmployee = () => {
                                 default: false
                             }
                         ])
-                        .then(employeeData => {
-                            if (employeeData.confirmAddEmployee) {
-                                return generateEmployee();
-                            } else {
-                                return
-                            }
-                        })
+                       
                 }
+            }
+        })
+        .then((data) => {
+            if (data.confirmAddEmployee) {
+                let employee = {
+                    ...data,
+                    // ...employeeData
+                };
+                employees.push(employee);
+                return generateManager();
+            } else {
+                let employee = {
+                    ...data,
+                    // ...employeeData
+                };
+                employees.push(employee);
+                return;
+
             }
         })
 
@@ -178,8 +199,9 @@ const writeFile = (fileName, data) => {
 function init() {
 generateManager()
     .then(generateEmployee)
-    .then(input => {
-        return generateHTML(input);
+    .then(() => {
+        console.log(employees)
+        return generateHTML(employees);
     })
     .then(html => {
         writeFile('htmldemo.html', html);
@@ -191,6 +213,6 @@ generateManager()
 
 init();
     
-    // then catch errors 
+   
 
 

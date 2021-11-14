@@ -179,13 +179,14 @@ async function startQuestions() {
 		
 	}
 	// for (var i = 0; i < employees.length; i++) {
-	// 	console.log(employees[i]);
+	// 	// console.log(employees[i]);
 	// 	console.log(employees[i].employeeName);
 	// 	console.log(employees[i].employeeEmail);
 	// 	console.log(employees[i].employeeRole);
 	// 	console.log(employees[i].manager.managerID);
 	// 	console.log(employees[i].manager.managerOffice);
 	// }
+	console.log(employees[0].employeeRole)
 
 };
 
@@ -210,8 +211,8 @@ const writeFile = (fileName, data) => {
 
 function init() {
 startQuestions()
-	.then(data => {
-		return generateHTML(data);
+	.then(employees => {
+		return generateHTML(employees);
 	}) 
 	.then(html => {
 		writeFile('./output/htmldemo.html', html);

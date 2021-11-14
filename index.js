@@ -209,17 +209,3 @@ startQuestions()
 
 init();
 	
-// function init() {
-// 	startQuestions()
-// 	.then(data => {
-// 		return generateHTML(data)
-// 	})
-// 	.then(html => {
-// 		writeFile('./output/htmldemo.html', html);
-// 	})
-// 	.catch(err => {
-// 		console.log(err);
-// 	})
-// }
-
-// init();

@@ -1,12 +1,13 @@
-const { getNodeSourceCodeLocation } = require('parse5/lib/tree-adapters/default');
+
 const Engineer = require('../lib/Engineer');
 
 test('creates an Engineer object', () => {
-    const engineer = new Engineer('Bob');
+    const engineer = new Engineer('Bob', '3');
 
     
-    expect(engineer.github).toEqual(expect.stringContaining(engineer.github.toString()));
-    expect(employee.id).toEqual(expect.any(Number));
-    expect(employee.employeeRole).toBe();
+    
+    expect(engineer.getGithub()).toEqual(engineer.engineerGithub);
+    expect(engineer.getID()).toEqual(engineer.engineerID);
+    expect(engineer.getRole()).toBe(Engineer);
 })
 

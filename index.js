@@ -173,12 +173,23 @@ async function startQuestions() {
 		
 		startQuestions()
 	} else {
+		
 		console.log(employees);
 	
 		
 	}
+	// for (var i = 0; i < employees.length; i++) {
+	// 	console.log(employees[i]);
+	// 	console.log(employees[i].employeeName);
+	// 	console.log(employees[i].employeeEmail);
+	// 	console.log(employees[i].employeeRole);
+	// 	console.log(employees[i].manager.managerID);
+	// 	console.log(employees[i].manager.managerOffice);
+	// }
 
 };
+
+
 
 const writeFile = (fileName, data) => {
 	return new Promise((resolve, reject) => {

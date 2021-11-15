@@ -173,8 +173,13 @@ async function startQuestions() {
 		startQuestions()
 	} else {
 		
-		console.log(employees);
+		for (let i = 0; i < employees.length; i++) {
+			console.log(employees[i]);
+			console.log('this worked');
+		}
 	
+		return employees;
+		
 		
 	}
 	

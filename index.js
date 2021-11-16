@@ -178,7 +178,7 @@ async function startQuestions() {
 		
 		 let returned = generateHTML(employees)
 		 if (returned) {
-			 writeFile('./output/htmldemo.html', returned);
+			 writeFile('./output/teamprofile.html', returned);
 			 console.log('Your file was succesfully created!')
 		 } else {
 			 console.log(returned)

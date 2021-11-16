@@ -181,7 +181,7 @@ async function startQuestions() {
 			 writeFile('./output/teamprofile.html', returned);
 			 console.log('Your file was succesfully created!')
 		 } else {
-			 console.log(returned)
+			 console.log("There was an error");
 		 }
 		
 		

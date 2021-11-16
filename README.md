@@ -19,6 +19,8 @@
   Video Tutorial
   https://drive.google.com/file/d/1Q_5ilI90iA2ep392our9xOKJKVGjtZcf/view
 
+  <img src = "./assets/screenshot.png">
+
   
   
   

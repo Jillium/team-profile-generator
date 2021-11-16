@@ -176,7 +176,13 @@ async function startQuestions() {
 	
 		
 		
-		generateHTML(employees);
+		 let returned = generateHTML(employees)
+		 if (returned) {
+			 writeFile('./output/htmldemo.html', returned);
+		 } else {
+			 console.log(returned)
+		 }
+		
 		
 		
 	}

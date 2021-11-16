@@ -26,7 +26,7 @@
   Clone the repo. Make sure to download the npm package inquirer. You can use the command npm i inquirer. The program is run with node by using the command node index.js
 
   ### What will the app be used for? 
-  You can use this application in an employment setting to generate team profile. There are email links, office numbers and github links provided after generating the profile.
+  You can use this application in an employment setting to generate team profile. There are email links, office numbers and github links provided after generating the profile. A sample team profile can be found in the demo file. It is titled htmldemo.html. 
 
   ### How can you contribute?
   Fork your own copy and have fun!

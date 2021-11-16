@@ -173,12 +173,10 @@ async function startQuestions() {
 		startQuestions()
 	} else {
 		
-		for (let i = 0; i < employees.length; i++) {
-			console.log(employees[i]);
-			console.log('this worked');
-		}
 	
-		return employees;
+		
+		
+		generateHTML(employees);
 		
 		
 	}
@@ -205,14 +203,5 @@ const writeFile = (fileName, data) => {
 };
 
 
-function init() {
-startQuestions()
-	.then(data => {
-		return generateHTML(data);
-	}) 
-	.then(html => {
-		writeFile('./output/htmldemo.html', html);
-	})
-}
+startQuestions();
 
-init();

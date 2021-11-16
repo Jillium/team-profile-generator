@@ -15,6 +15,9 @@
 
   ## Project Description 
   This is a command line application to use node.js to build a team profile. Made for the University of Utah Coding Bootcamp.
+  
+  Video Tutorial
+  https://drive.google.com/file/d/1Q_5ilI90iA2ep392our9xOKJKVGjtZcf/view
 
   
   
